@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from '../header/Header';
+import Header from '../Header/Header';
 import { Switch, Route } from 'react-router-dom';
-import TopArtists from '../topArtists/TopArtists';
-import Error404 from '../error404/Error404';
+import TopArtists from '../TopArtists/TopArtists';
+import Error404 from '../Error404/Error404';
 
 const App = () => (
 
