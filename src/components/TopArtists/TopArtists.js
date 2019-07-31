@@ -8,7 +8,9 @@ class TopArtists extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            topArtists: []
+            topArtists: [],
+            selectedTrack: {},
+            currentTrackId: '',
         };
     }
 
@@ -18,7 +20,7 @@ class TopArtists extends React.Component {
                 console.log(topArtists, 'Top Artists')
                     this.setState({ topArtists });
             })
-            .catch(er => Error(err, "Loading Tracks"));
+            .catch(err => Error(err, "Loading Tracks"));
     }
 
     componentDidMount() {
@@ -28,7 +30,10 @@ class TopArtists extends React.Component {
     render() {
         const topArtistsList = this.state.topArtists.map(artist => (
             <div>
-                <h3>{artist.name.toUppercase()}</h3>
+                <h1>{artist.name.toUpperCase()}</h1>
+                <img src={`${artist.image}`} alt="Album Art" />
+                <h4>Bio: {artist.bio}</h4>
+                //TODO: look up how to convert string into html for bio
             </div>
         ));
 
