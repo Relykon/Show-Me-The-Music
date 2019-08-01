@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './TopArtists.css';
-import Artist from '../Artist/Artist';
-import TopArtistsCalls from '../../models/TopArtistsCalls';
+// import Artist from '../Artist/Artist';
+import TopArtistsCalls from '../../Models/TopArtistsCalls.js';
 
 class TopArtists extends React.Component {
     constructor(props) {
@@ -14,26 +14,27 @@ class TopArtists extends React.Component {
         };
     }
 
-    loadTopTracks() {
+    loadTopArtists() {
         return TopArtistsCalls.getTopArtists()
             .then(topArtists => {
                 console.log(topArtists, 'Top Artists')
-                    this.setState({ topArtists });
+                this.setState({ topArtists });
             })
             .catch(err => Error(err, "Loading Tracks"));
     }
 
     componentDidMount() {
-        this.loadTopTracks();
+        this.loadTopArtists();
     }
 
     render() {
         const topArtistsList = this.state.topArtists.map(artist => (
             <div>
-                <h1>{artist.name.toUpperCase()}</h1>
+                <h1>{artist.name}</h1>
                 <img src={`${artist.image}`} alt="Album Art" />
-                <h4>Bio: {artist.bio}</h4>
-                //TODO: look up how to convert string into html for bio
+                <br></br>
+                <Link to={artist.id}>view artist details</Link>
+                {/* //TODO: look up how to convert string into html for bio */}
             </div>
         ));
 
@@ -43,7 +44,6 @@ class TopArtists extends React.Component {
                 <h4>View Top Artists By:</h4>
                     <Link to="/dailytop">Today</Link> | <Link to="/weeklytop">This Week</Link> | <Link to="/monthlytop">This Month</Link>
                 <h1>This Week's Top Artists</h1>
-                <Artist />
                 <ul>{topArtistsList}</ul>
             </div>
         )
