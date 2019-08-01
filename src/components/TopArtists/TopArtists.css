@@ -1,8 +1,13 @@
 .TopArtists {
     background-color: steelblue;
+    margin: -22px;
 }
 
 .TopArtistsList {
     display: inline-block;
-    margin: 4px;
+    margin: 5px;
+}
+
+.ArtistName {
+    font-size: large;
 }

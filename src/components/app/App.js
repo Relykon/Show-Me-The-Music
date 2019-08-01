@@ -11,11 +11,11 @@ const App = () => (
     <div className="App">
       <Header/>
       <Switch>
-        <Route exact path="/" render={() => <TopArtists />} />
-        <Route exact path="/dailytop" render={() => <TopArtists />} />
-        <Route exact path="/weeklytop" render={() => <TopArtists />} />
-        <Route exact path="/monthlytop" render={() => <TopArtists />} />
-        <Route exact path="/yearlytop" render={() => <TopArtists />} />
+        <Route exact path="/" render={(props) => <TopArtists {...props}/>} />
+        <Route exact path="/dailytop" render={(props) => <TopArtists {...props}/>} />
+        <Route exact path="/weeklytop" render={(props) => <TopArtists {...props}/>} />
+        <Route exact path="/monthlytop" render={(props) => <TopArtists {...props}/>} />
+        <Route exact path="/yearlytop" render={(props) => <TopArtists {...props}/>} />
         <Route exact path="/:id" render={(props) => <Artist {...props}/>} />
         <Route component={Error404} />
       </Switch>
