@@ -1,6 +1,7 @@
 .TopArtists {
     background-color: steelblue;
     margin: -22px;
+    height: 100vh;
 }
 
 .TopArtistsList {
