@@ -1,3 +1,16 @@
 .Artist {
     background-color: darkseagreen;
 }
+
+.ArtistTracks {
+    background-color: steelblue;
+    text-align: center;
+}
+
+.ArtistBio {
+    border-style: double;
+    border-width: thick;
+    border-color: darkgreen;
+    width: 50vh;
+    display: inline-block
+}

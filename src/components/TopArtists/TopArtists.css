@@ -1,3 +1,8 @@
 .TopArtists {
-    background-color: steelblue
+    background-color: steelblue;
+}
+
+.TopArtistsList {
+    display: inline-block;
+    margin: 4px;
 }

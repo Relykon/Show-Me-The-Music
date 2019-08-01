@@ -29,7 +29,7 @@ class TopArtists extends React.Component {
 
     render() {
         const topArtistsList = this.state.topArtists.map(artist => (
-            <div>
+            <div className="TopArtistsList">
                 <h1>{artist.name}</h1>
                 <img src={`${artist.image}`} alt="Album Art" />
                 <br></br>
@@ -44,7 +44,7 @@ class TopArtists extends React.Component {
                 <h4>View Top Artists By:</h4>
                     <Link to="/dailytop">Today</Link> | <Link to="/weeklytop">This Week</Link> | <Link to="/monthlytop">This Month</Link>
                 <h1>This Week's Top Artists</h1>
-                <ul>{topArtistsList}</ul>
+                {topArtistsList}
             </div>
         )
     }

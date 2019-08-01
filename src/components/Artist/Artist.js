@@ -54,8 +54,10 @@ class Artist extends React.Component {
                 <img src={`${artist.image}`} alt="Album Art" />
                 <h3>Tracks:</h3>
                 <ul>{artistTracksList}</ul>
-                <h5>About {artist.name}:</h5>
-                <p dangerouslySetInnerHTML={{ __html: artist.bio }}/>
+                <div className="ArtistBio">
+                    <h5>About {artist.name}:</h5>
+                    <p dangerouslySetInnerHTML={{ __html: artist.bio }}/>
+                </div>
             </div>
         )
     }
