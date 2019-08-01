@@ -12,6 +12,10 @@ const App = () => (
       <Header/>
       <Switch>
         <Route exact path="/" render={() => <TopArtists />} />
+        <Route exact path="/dailytop" render={() => <TopArtists />} />
+        <Route exact path="/weeklytop" render={() => <TopArtists />} />
+        <Route exact path="/monthlytop" render={() => <TopArtists />} />
+        <Route exact path="/yearlytop" render={() => <TopArtists />} />
         <Route exact path="/:id" render={(props) => <Artist {...props}/>} />
         <Route component={Error404} />
       </Switch>

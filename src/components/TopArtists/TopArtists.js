@@ -8,33 +8,62 @@ class TopArtists extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            topArtists: [],
+            dailyTopArtists: [],
+            weeklyTopArtists: [],
+            monthlyTopArtists: [],
+            yearlyTopArtists: [],
             selectedTrack: {},
             currentTrackId: '',
         };
     }
 
-    loadTopArtists() {
-        return TopArtistsCalls.getTopArtists()
-            .then(topArtists => {
-                console.log(topArtists, 'Top Artists')
-                this.setState({ topArtists });
+    loadDailyTopArtists() {
+        return TopArtistsCalls.getDailyTopArtists()
+            .then(DailyTopArtists => {
+                console.log(DailyTopArtists, 'Daily Top Artists')
+                this.setState({ DailyTopArtists });
+            })
+            .catch(err => Error(err, "Loading Tracks"));
+    }
+
+    loadWeeklyTopArtists() {
+        return TopArtistsCalls.getWeeklyTopArtists()
+            .then(weeklyTopArtists => {
+                console.log(weeklyTopArtists, 'Weekly Top Artists')
+                this.setState({ weeklyTopArtists });
+            })
+            .catch(err => Error(err, "Loading Tracks"));
+    }
+
+    loadMonthlyTopArtists() {
+        return TopArtistsCalls.getMonthlyTopArtists()
+        .then(MonthlyTopArtists => {
+            console.log(MonthlyTopArtists, 'Monthly Top Artists')
+            this.setState({ MonthlyTopArtists });
+        })
+        .catch(err => Error(err, "Loading Tracks"));
+    }
+
+    loadYearlyTopArtists() {
+        return TopArtistsCalls.getYearlyTopArtists()
+            .then(YearlyTopArtists => {
+                console.log(YearlyTopArtists, 'Yearly Top Artists')
+                this.setState({ YearlyTopArtists });
             })
             .catch(err => Error(err, "Loading Tracks"));
     }
 
     componentDidMount() {
-        this.loadTopArtists();
+        this.loadWeeklyTopArtists();
     }
 
     render() {
-        const topArtistsList = this.state.topArtists.map(artist => (
+        const topArtistsList = this.state.weeklyTopArtists.map(artist => (
             <div className="TopArtistsList">
                 <h1>{artist.name}</h1>
                 <img src={`${artist.image}`} alt="Album Art" />
                 <br></br>
                 <Link to={artist.id}>view artist details</Link>
-                {/* //TODO: look up how to convert string into html for bio */}
             </div>
         ));
 
@@ -42,7 +71,7 @@ class TopArtists extends React.Component {
         return (
             <div className="TopArtists">
                 <h4>View Top Artists By:</h4>
-                    <Link to="/dailytop">Today</Link> | <Link to="/weeklytop">This Week</Link> | <Link to="/monthlytop">This Month</Link>
+                    <Link to="/dailytop">Today</Link> | <Link to="/weeklytop">This Week</Link> | <Link to="/monthlytop">This Month</Link> | <Link to="/yearlytop">This Year</Link>
                 <h1>This Week's Top Artists</h1>
                 {topArtistsList}
             </div>

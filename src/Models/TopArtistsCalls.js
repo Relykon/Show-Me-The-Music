@@ -1,7 +1,22 @@
 const TopArtistsCalls = {};
 
-TopArtistsCalls.getTopArtists = function getTopArtists() {
-    console.log('getTopArtists')
+TopArtistsCalls.getDailyTopArtists = function getDailyTopArtists() {
+    console.log('getDailyTopArtists')
+    const url = "https://api.napster.com/v2.2/artists/top?range=day"
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'YzQ5ZjUwNmMtMjk2Ny00YWUwLThkOTctNTZhODFjNTI0MWYz'
+        }
+    })
+    .then(result => result.json())
+    .then(data => TopArtistsCalls.simplifyArtists(data.artists))
+    .catch(err => Error(err, "Loading Top Artists of the Day..."));
+};
+
+TopArtistsCalls.getWeeklyTopArtists = function getWeeklyTopArtists() {
+    console.log('getWeeklyTopArtists')
     const url = "https://api.napster.com/v2.2/artists/top?range=week"
     return fetch(url, {
         method: 'GET',
@@ -12,7 +27,37 @@ TopArtistsCalls.getTopArtists = function getTopArtists() {
     })
     .then(result => result.json())
     .then(data => TopArtistsCalls.simplifyArtists(data.artists))
-    .catch(err => Error(err, "Loading Top Artists"));
+    .catch(err => Error(err, "Loading Top Artists of the Week..."));
+};
+
+TopArtistsCalls.getMonthlyTopArtists = function getMonthlyTopArtists() {
+    console.log('getMonthlyTopArtists')
+    const url = "https://api.napster.com/v2.2/artists/top?range=month"
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'YzQ5ZjUwNmMtMjk2Ny00YWUwLThkOTctNTZhODFjNTI0MWYz'
+        }
+    })
+    .then(result => result.json())
+    .then(data => TopArtistsCalls.simplifyArtists(data.artists))
+    .catch(err => Error(err, "Loading Top Artists of the Month..."));
+};
+
+TopArtistsCalls.getYearlyTopArtists = function getYearlyTopArtists() {
+    console.log('getYearlyTopArtists')
+    const url = "https://api.napster.com/v2.2/artists/top?range=year"
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'YzQ5ZjUwNmMtMjk2Ny00YWUwLThkOTctNTZhODFjNTI0MWYz'
+        }
+    })
+    .then(result => result.json())
+    .then(data => TopArtistsCalls.simplifyArtists(data.artists))
+    .catch(err => Error(err, "Loading Top Artists of the Year..."));
 };
 
 TopArtistsCalls.simplifyArtists = function simplifyArtists(artists) {
